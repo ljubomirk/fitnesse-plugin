@@ -270,10 +270,11 @@ public class FitnesseExecutor {
 		int pos = targetPageExpression.indexOf('&');
 		if (pos == -1) pos = targetPageExpression.length();
 		
-		return String.format("/%1$s?%2$s%3$s", 
+		return String.format("/%1$s?%2$s%3$s%4$s", 
 				targetPageExpression.substring(0, pos),
 				builder.getFitnesseTargetIsSuite() ? "suite" : "test",
-				targetPageExpression.substring(pos)+"&format=xml&includehtml");
+				targetPageExpression.substring(pos)+"&format=xml",
+				builder.getFitnesseTargetIncludeHtml() ? "&includehtml" : "");
 	}
 
 	private void writeFitnesseResults(PrintStream log, FilePath resultsFilePath, byte[] results) {
